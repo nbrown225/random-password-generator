@@ -1,5 +1,7 @@
 
-// variable for length
+// DOM ELEMENTS
+const newPassword = document.querySelector("#password");
+var startBtn = document.querySelector("#generate")
 
 
 // FUNCTION FOR LOWER LETTERS CHARCODE 97-122
@@ -21,8 +23,24 @@ function numbers() {
 function symbols() {
     return String.fromCharCode(Math.floor(Math.random() * 15) + 33);
 }
+// CONSOL LOG TO MAKE SURE FUNCTIONS ARE WORKING
+console.log(lowerLetter());
+console.log(upperLetter());
+console.log(numbers());
+console.log(symbols());
 
-
+// PROMPT TO START PASSWORD GENERATOR
+function startNewPassword() {
+    let start = "WOULD YOU LIKE TO CREATE A NEW PASSWORD?";
+    if (confirm(start) == true) {
+        window.alert("HERE WE GO!");
+    } else {
+        window.alert("AW POO, MAYBE NEXT TIME! :(")
+    }
+}
+// PASSWORD VARIABLE
+// FILTER CONFIRMED, NOT WANTED
+// ADD LENGTH
 
 
 
