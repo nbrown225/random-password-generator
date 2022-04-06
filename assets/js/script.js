@@ -8,6 +8,62 @@ var startBtn = document.querySelector("#generate")
 function lowerLetter() {
     return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
 }
+console.log(lowerLetter());
+
+// PROMPT TO START PASSWORD GENERATOR
+function startNewPassword() {
+    let start = "WOULD YOU LIKE TO CREATE A NEW PASSWORD?";
+    if (confirm(start) == true) {
+        addLowerLetter();
+    } else {
+        window.alert("AW POO, MAYBE NEXT TIME! :(")
+    }
+}
+
+function addLowerLetter() {
+    let addLower = "WOULD YOU LIKE TO ADD LOWERCASE LETTERS?";
+    if (confirm(addLower) == true) {
+        brandNewPassword = lowerLetter();
+        window.alert(brandNewPassword)
+    } else {
+        window.alert("NONE WILL BE ADDED")
+    }
+}
+
+// 1 A PLACEHOLDER FOR NEW PASSWORD
+var brandNewPassword
+
+// 2 A PROMPT TO START MAKING THE NEW PASSWORD
+function lowerLetterCheck() {
+
+    // 3 A PROMPT FOR WHAT i'D LIKE TO INCLUDE IN THE PASSWORD
+
+    // 3a WOULD I LIKE LETTERS?
+    
+    // 3b IF YES, INCLUDE IN PASSWORD PLACEHOLDER
+    
+    // 3C IF NO, SKIP
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 
 // FUNCTION FOR UPPER LETTERS CHARCODE 65-90
 function upperLetter() {
@@ -24,20 +80,12 @@ function symbols() {
     return String.fromCharCode(Math.floor(Math.random() * 15) + 33);
 }
 // CONSOL LOG TO MAKE SURE FUNCTIONS ARE WORKING
-console.log(lowerLetter());
+
 console.log(upperLetter());
 console.log(numbers());
 console.log(symbols());
 
-// PROMPT TO START PASSWORD GENERATOR
-function startNewPassword() {
-    let start = "WOULD YOU LIKE TO CREATE A NEW PASSWORD?";
-    if (confirm(start) == true) {
-        window.alert("HERE WE GO!");
-    } else {
-        window.alert("AW POO, MAYBE NEXT TIME! :(")
-    }
-}
+
 // PASSWORD VARIABLE
 // FILTER CONFIRMED, NOT WANTED
 // ADD LENGTH
