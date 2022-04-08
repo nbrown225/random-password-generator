@@ -1,11 +1,12 @@
 
 // DOM ELEMENTS
 var startBtn = document.querySelector("#generate")
-var generatedPassword = "";
 
 function includeUpperCase() {
     return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
 }
+/*var generatedPassword = "";
+
 function confirmPassword() {
     var confirmUpperCase = confirm("WOULD YOU UPPER CASE?");
     if (confirmUpperCase) {
@@ -21,9 +22,27 @@ function writePassword() {
     generatedPasswordText.value = "Your new password is: ", generatedPassword
     console.log("the pw is"+generatedPassword);
 }
-startBtn.addEventListener("click", writePassword)
 
+*/
 
+function passwordCriteria() {
+    var password = "";
+    var confirmUpperCase = confirm("WOULD YOU UPPER CASE?");
+    if (confirmUpperCase == true) {
+        includeUpperCase();
+        return "YOUR PASSWORD IS" + password;
+    }
+    return password
+}
+function testWritePassword(){
+    var password = passwordCriteria();
+    var passwordText = document.querySelector("#password");
+
+    passwordText.value = "Your new password is: ", password
+    console.log(password);
+
+}
+startBtn.addEventListener("click", testWritePassword)
 
 
 
