@@ -1,44 +1,77 @@
-// GET DOM ELEMENTS
-var startBtn = document.querySelector('#generate')
-var printedPassword = document.querySelector('#password')
+var generateBtn = document.querySelector('#generate');
+var passwordText = document.querySelector('#password');
+var passwordLow = [];
 
 
-// SET PASSWORD STRING
-var passwordCriteria = "";
 
-// GET CRITERIA
 
-// PUT CRITERIA INTO A STRING
-// number
-function randomNumber() {
-    return String.fromCharCode(Math.floor(Math.random() * 10) + 48)
+function getLower() {
+    // var howLong = (prompt('8-140'));
+    
+    var lower = '';
+    if (confirm("lowercase characters?") == true) {
+        lowerArr = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+
+        lower = lowerArr;
+        console.log(lower);
+        console.log(lowerArr);
+        passwordLow.push(lower);
+        getNum()
+    } else{
+        console.log('we wont add');
+        getNum()
+
+    }
+    console.log(passwordLow);
+    return passwordLow
 }
-// lowercase
-function randomLower() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+
+function getNum() {
+    var numbers = '';
+    if (confirm('numbers?') == true) {
+        numbersArr = '0123456789';
+        numbers = numbersArr;
+        console.log(numbers);
+    } else{
+        console.log('numbers not added');
+    }
+    console.log(passwordLow);
+    return passwordLow.push(numbers)
 }
-// uppercase
-function randomUpper() {
-    return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+
+
+
+function writePassword() {
+    console.log("clicked");
+    getLower()
 }
-// special symbol
-function randomSymbol() {
-    return String.fromCharCode(Math.floor(Math.random() * 15) + 33);
-}
+
+
 // test the results
-console.log(randomNumber());
-console.log(randomLower());
-console.log(randomUpper());
-console.log(randomSymbol());
-// PUSH CRITERIA TOGETHER
+// console.log(randomNumber());
+// console.log(randomLower());
+// console.log(randomUpper());
+// console.log(randomSymbol());
 
+// PROMPT USERS FOR CRITERIA
+// // var numbers  = ""
+// // function getCriteria() {
+// //     if (confirm('Add number?') == true) {
+// //         randomNumber()
+// //         return true
+// //     } else {
+// //         console.log('no add');
+// //     }
+// // }
+
+
+// PUSH CRITERIA TOGETHER
 // PRINT PASSWORD TO PAGE
 
 
 
 
 // START FUNCTION
-
 
 // WANT PASSWORD TO PRINT ON PAGE
 
