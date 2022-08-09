@@ -1,52 +1,105 @@
+// -----------------GET DOM ELEMENTS
 var generateBtn = document.querySelector('#generate');
 var passwordText = document.querySelector('#password');
-var passwordLow = [];
+
+// -----------------SET VARIABLES
+// EMPTY STRING TO CONTAIN PASSWORD BEING CREATED
+var tempPassword = ['start'];
+
+// MIN / MAX AMOUNTS FOR PASSWORD LENGTH
+const MIN = 8;
+const MAX = 140;
+
+// ARRAYS FOR NUMBERS / SYMBOLS / UPPER / LOWER
+var numbersArr = String.fromCharCode(65,90)
+console.log(numbersArr);
+var symbolArr = ['$','%','^','&','*','(',')','#','@','!'];
+var lowerArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',];
+var upperArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
 
 
 
-
-function getLower() {
-    // var howLong = (prompt('8-140'));
-    
-    var lower = '';
-    if (confirm("lowercase characters?") == true) {
-        lowerArr = String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-
-        lower = lowerArr;
-        console.log(lower);
-        console.log(lowerArr);
-        passwordLow.push(lower);
-        getNum()
-    } else{
-        console.log('we wont add');
-        getNum()
-
+// ------------------FUNCTIONS FOR PASSWORD CRITERIA
+// UPPERCASE
+function addUpper() {
+    //var upper = '';
+    if (confirm('Would you like to add uppercase characters?') == true) {
+       // upper = upperArr
+        tempPassword.push(upperArr);
+        addLower();
+    } else {
+        console.log('upper not added');
+        console.log(tempPassword);
+        addLower();
+        return tempPassword;
     }
-    console.log(passwordLow);
-    return passwordLow
-}
-
-function getNum() {
-    var numbers = '';
-    if (confirm('numbers?') == true) {
-        numbersArr = '0123456789';
-        numbers = numbersArr;
-        console.log(numbers);
+    console.log(tempPassword);
+    return tempPassword;
+};
+// LOWERCASE
+function addLower() {
+    // var lower = '';
+    if (confirm('Would you like to add lowercase characters?') == true) {
+        //lower = lowerArr;
+        tempPassword.push(lowerArr);
+        addNumber();
     } else{
-        console.log('numbers not added');
+        console.log('lower not added');
+        console.log(tempPassword);
+        addNumber();
+        return tempPassword;
     }
-    console.log(passwordLow);
-    return passwordLow.push(numbers)
+    console.log(tempPassword);
+    return tempPassword;
+};
+// NUMBER
+function addNumber() {
+    if (confirm('Would you like to add numbers?') == true) {
+        tempPassword.push(numbersArr);
+        addSymbol();
+    } else {
+        console.log('no number');
+        addSymbol();
+        return tempPassword;
+    }
+    return tempPassword;
+};
+// SYMBOL
+function addSymbol() {
+    if (confirm('Would you like to add symbols?') == true) {
+        tempPassword.push(symbolArr);
+        getLength();
+    } else {
+        console.log('no symbol');
+        getLength();
+        return tempPassword;
+    }
+    console.log(tempPassword);
+    return tempPassword;
 }
-
+// LENGTH
+function getLength() {
+    for (index = 0; index < passwordLength; index++){
+        var randomIndex = Math.floor
+    }
+}
 
 
 function writePassword() {
     console.log("clicked");
-    getLower()
+    addUpper()
 }
 
-
+// for (let index = 0; index < passwordLength; index++) {
+//     var randomIndex = Math.floor(Math.random()*passwordLength)
+//     const element = temppass[randomIndex];
+//     // arrays go here
+//     const element2 = temppass2[index];
+//    // console.log(element2);
+//     console.log(element);
+    
+// }
+}
 // test the results
 // console.log(randomNumber());
 // console.log(randomLower());
@@ -61,7 +114,7 @@ function writePassword() {
 // //         return true
 // //     } else {
 // //         console.log('no add');
-// //     }
+ //     }
 // // }
 
 
