@@ -11,30 +11,34 @@ const MIN = 8;
 const MAX = 140;
 
 // ARRAYS FOR NUMBERS / SYMBOLS / UPPER / LOWER
-var numbersArr = String.fromCharCode(65,90)
-console.log(numbersArr);
+//var numbersArr = String.fromCharCode(65,90)
+//console.log(numbersArr);
 var symbolArr = ['$','%','^','&','*','(',')','#','@','!'];
 var lowerArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',];
 var upperArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
-
+var numberArr = ['1','2','3','4','5','6','7','8','9','0']
+var symbol = [];
+var upper = [];
+var lower = [];
+var number = [];
+var passwordLength
 
 
 // ------------------FUNCTIONS FOR PASSWORD CRITERIA
 // UPPERCASE
 function addUpper() {
-    //var upper = '';
     if (confirm('Would you like to add uppercase characters?') == true) {
-       // upper = upperArr
-        tempPassword.push(upperArr);
-        addLower();
+        upper = upperArr
+       // tempPassword.push(upperArr);
+        addSymbol();
     } else {
         console.log('upper not added');
-        console.log(tempPassword);
-        addLower();
-        return tempPassword;
+        //console.log(tempPassword);
+        addSymbol();
+        return upper;
     }
-    console.log(tempPassword);
-    return tempPassword;
+    //console.log(tempPassword);
+    return upper;
 };
 // LOWERCASE
 function addLower() {
@@ -45,11 +49,11 @@ function addLower() {
         addNumber();
     } else{
         console.log('lower not added');
-        console.log(tempPassword);
+        //console.log(tempPassword);
         addNumber();
         return tempPassword;
     }
-    console.log(tempPassword);
+    //console.log(tempPassword);
     return tempPassword;
 };
 // NUMBER
@@ -67,26 +71,49 @@ function addNumber() {
 // SYMBOL
 function addSymbol() {
     if (confirm('Would you like to add symbols?') == true) {
-        tempPassword.push(symbolArr);
+        symbol = symbolArr
+        //tempPassword.push(symbolArr);
         getLength();
     } else {
         console.log('no symbol');
         getLength();
-        return tempPassword;
+        return symbol;
     }
-    console.log(tempPassword);
-    return tempPassword;
+    //console.log(tempPassword);
+    return symbol;
 }
 // LENGTH
 function getLength() {
-    for (index = 0; index < passwordLength; index++){
-        var randomIndex = Math.floor
+    passwordLength = prompt('how long 1-11')
+    if (passwordLength > MIN || passwordLength < MAX) {
+        console.error('nope');
     }
+    console.log(passwordLength);
+    getRandom()
+    return passwordLength
+}
+
+// RANDOMIZE
+function getRandom() {
+    
+    for (var i = 0; i< passwordLength; i++){
+        //upper = [];
+        upper.push(upperArr[Math.floor(Math.random()*upperArr.length)]);
+        //lower.push(lowerArr[Math.floor(Math.random()*lowerArr.length)]);
+        symbol.push(symbolArr[Math.floor(Math.random()*symbol.length)]);
+        number.push(numberArr[Math.floor(Math.random()*numberArr.length)]);
+    }
+    //console.log(passwordLength);
+    //console.log(number);
+    //console.log(symbol);
+    //console.log(lower);
+    console.log(number);
+    return
 }
 
 
 function writePassword() {
-    console.log("clicked");
+    //console.log("clicked");
     addUpper()
 }
 
@@ -99,7 +126,7 @@ function writePassword() {
 //     console.log(element);
     
 // }
-}
+
 // test the results
 // console.log(randomNumber());
 // console.log(randomLower());

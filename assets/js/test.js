@@ -1,75 +1,74 @@
 var generateBtn = document.querySelector('#generate');
-var passwordText = document.querySelector('#password');
-var passwordLow = [];
 
-var numbersArr = ['0','1','2','3','4','5','6','7','8','9']
+const MIN = 8;
+const MAX = 140;
+var passwordLength
+var symbolArr = ['$','%','^','&','*','(',')','#','@','!'];
+var numberArr = ['1','2','3','4','5','6','7','8','9','0']
 
-var symbolArr = [,'$','%','^','&','*','(',')','#','@','!',]
-var UPPERArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',]
-var lowerArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',]
-// const MIN = 1;
-// const MAX = 10;
-
+var upperArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
+var number = [];
 
 
-function getLower() {
-    // var howLong = (prompt('8-140'));
-    
-    var lower = '';
-    if (confirm("lowercase characters?") == true) {
-        lower = lowerArr;
-        console.log(lower);
-        console.log(lowerArr);
-        passwordLow.push(lower);
-        getNum()
-    } else{
-        console.log('we wont add');
-        getNum()
+function addNumber() {
+    if (confirm('Would you like to add numbers?') == true) {
+        //tempPassword.push(numbersArr);
+        getLength();
+    } else {
+        console.log('no number');
+        getLength();
 
     }
-    console.log(passwordLow);
-    return passwordLow
-}
+    return
+};
 
-function getNum() {
-    var numbers = '';
-    if (confirm('numbers?') == true) {
-        numbers = numbersArr;
-        console.log(numbers);
-        randomize()
-    } else{
-        console.log('numbers not added');
-    }
-    console.log(passwordLow);
-    return passwordLow.push(numbers)
-}
-var temppass = ['0','1','2','3','4','5','6','7','8','9'];
 function getLength() {
-    var passwordLength = prompt('1-10')
-    passwordLength.value
+    passwordLength = prompt('how long 1-11')
+    if (passwordLength > MIN || passwordLength < MAX) {
+        console.error('nope');
+    }
     console.log(passwordLength);
-    // var pwlength = parseInt(passwordLength.value)
-    // if (pwlength < MIN || pwlength > MAX) {
-    //     console.log(passwordLength);
-    // }
-    // return
-    
+    getRandom()
+    return passwordLength
 }
-
-// function pwLenght() {
-//     characterLength = parseInt(prompt('How long do you want the password? 8 - 140'));
-//     if(isNaN(characterLength) || characterLength<8 || characterLength<140){
-//         return false;
+function getRandom() {
+    
+    for (var i = 0; i< passwordLength; i++){
+        //upper = [];
+        //upper.push(upperArr[Math.floor(Math.random()*upperArr.length)]);
+        //lower.push(lowerArr[Math.floor(Math.random()*lowerArr.length)]);
+        //symbol.push(symbolArr[Math.floor(Math.random()*symbol.length)]);
+        number.push(numberArr[Math.floor(Math.random()*numberArr.length)]);
+    }
+    //console.log(passwordLength);
+    //console.log(number);
+    //console.log(symbol);
+    //console.log(lower);
+    console.log(number);
+    return
+}
+// function getRandom () {
+//     var passwordLength = prompt('how long 1-11')
+//     var result = [];
+//     var result2 = [];
+//     for (var i = 0; i< passwordLength; i++){
+//         result.push(upperArr[Math.floor(Math.random()*upperArr.length)])
+//         result2.push(symbolArr[Math.floor(Math.random()*symbolArr.length)])
 //     }
-
+//     console.log(result);
+//     console.log(result2);
+//     return 
 // }
+// getRandom()
+
+
+
 
 
 
 function writePassword() {
-    console.log("clicked");
-    getLength()
+    //console.log("clicked");
+    addNumber()
 }
 
 
-//generateBtn.addEventListener('click', writePassword);
