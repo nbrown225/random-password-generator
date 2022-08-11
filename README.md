@@ -7,7 +7,7 @@
     - [RESOURCES](#resources)
 
 ### 
-![alt text](assets\images\RPWGscreenshot.png)
+![alt text](./assets/images/RPWGscreenshot.png)
 
 ### DEPLOYED LINK
 - [Click HERE to view page](https://nbrown225.github.io/random-password-generator/)
