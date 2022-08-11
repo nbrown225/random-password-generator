@@ -4,26 +4,96 @@ var passwordText = document.querySelector('#password');
 
 // -----------------SET VARIABLES
 // EMPTY STRING TO CONTAIN PASSWORD BEING CREATED
-var tempPassword = ['start'];
+var tempPassword = [];
 
-// MIN / MAX AMOUNTS FOR PASSWORD LENGTH
+// MIN / MAX AMOUNTS FOR PASSWORD LENGTH / variable to hold chosen password length
 const MIN = 8;
 const MAX = 140;
+var passwordLength
 
-// ARRAYS FOR NUMBERS / SYMBOLS / UPPER / LOWER
-//var numbersArr = String.fromCharCode(65,90)
-//console.log(numbersArr);
+// -----------------ARRAYS FOR NUMBERS / SYMBOLS / UPPER / LOWER
 var symbolArr = ['$','%','^','&','*','(',')','#','@','!'];
 var lowerArr = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',];
 var upperArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
 var numberArr = ['1','2','3','4','5','6','7','8','9','0']
-var symbol = [];
-var upper = [];
-var lower = [];
-var number = [];
-var passwordLength
+var randoSymbol = [];
+var randoUpper = [];
+var randoLlower = [];
+var randoNumber = [];
 
 
+// ------------------GET LENGTH OF PASSWORD
+function getLength () {
+    passwordLength = prompt('How long do you want the password to be? 8-140');
+    // CHECK IF PASSWORD IS BETWEEN SPECIFIED LENGTH
+    if (passwordLength < MIN || passwordLength > MAX) {
+        alert('PASSWORD MUST BE BETWEEN 8-140 CHARACTERS!');
+        getLength();
+        return false;
+    }
+    console.log(passwordLength);
+    getRandom();
+    return;
+}
+// VARIABLES FOR
+function getRandom (){
+    for (var i = 0; i < passwordLength; i++){
+       randoNumber.push(numberArr[Math.floor(Math.random()*numberArr.length)]);
+       randoUpper.push(upperArr[Math.floor(Math.random()*upperArr.length)])
+    }
+    // REMOVE THE FREAKING COMMAS!!!!
+     // ATTEPTED TO REMOVE COMMAS, BUT WOULD RESULT IN STRING WITH RANDOM COMMAS
+    //newString = randostring.toString().replace('',',')
+    
+    //console.log(randoNumber);
+    checkNumber()
+    return
+}
+// ------------------CONFIRM PROMPTS
+// NUMBERS
+function checkNumber () {
+    if (confirm('Would you like to add numbers?') == true) {
+        tempPassword.push(randoNumber);
+        //console.log(tempPassword);
+        checkUpper();
+    } else{
+        checkUpper();
+    }
+    return
+}
+// UPPER LETTERS
+function checkUpper () {
+    if (confirm('Would you like to add upper letters?') == true) {
+        tempPassword.push(randoUpper);
+        //console.log(tempPassword);
+        randomizeNewPassword()
+    } else{
+        randomizeNewPassword()
+    }
+}
+function randomizeNewPassword (){
+    for (var i = 0; i < passwordLength; i++){
+        createdPassword = tempPassword.toString('').replaceAll(',','');
+        console.log(createdPassword);
+    }
+    return createdPassword
+}
+// CHECK CONFIRM PROMPTS
+    // IF TRUE
+        // RANDOMIZE
+        // PULL LENGTH
+        // ADD TO TEMP PASSWORD
+    // IF FALSE
+        // MOVE TO NEXT QUESTION
+
+
+// START PASSWORD CRITERIA
+function startFunc() {
+    console.log("clicked");
+    getLength()
+}
+
+/*
 // ------------------FUNCTIONS FOR PASSWORD CRITERIA
 // UPPERCASE
 function addUpper() {
@@ -46,18 +116,18 @@ function addLower() {
     if (confirm('Would you like to add lowercase characters?') == true) {
         //lower = lowerArr;
         tempPassword.push(lowerArr);
-        addNumber();
+        checkNumber();
     } else{
         console.log('lower not added');
         //console.log(tempPassword);
-        addNumber();
+        checkNumber();
         return tempPassword;
     }
     //console.log(tempPassword);
     return tempPassword;
 };
 // NUMBER
-function addNumber() {
+function checkNumber() {
     if (confirm('Would you like to add numbers?') == true) {
         tempPassword.push(numbersArr);
         addSymbol();
@@ -189,7 +259,7 @@ function writePassword() {
 
 
 
-// getCriteria = () =>{
+// getCriteria = (){
 //     var numbers = "0123456789";
 //     var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 //     var lower = "abcdefghijklmnopqrstuvwxyz";
@@ -199,6 +269,7 @@ function writePassword() {
 // }
 
 
-// startFunc = () => {
+// startFunc = () {
 //     prompt(getCriteria);
 // }
+*/

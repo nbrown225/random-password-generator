@@ -8,6 +8,10 @@ var numberArr = ['1','2','3','4','5','6','7','8','9','0']
 
 var upperArr = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',];
 var number = [];
+function name(params) {
+    
+}
+var tempPassword = []
 
 
 function addNumber() {
@@ -17,10 +21,20 @@ function addNumber() {
     } else {
         console.log('no number');
         getLength();
-
+    return false
     }
     return
 };
+
+// CONFIRM PROMPTS
+// CHECK CONFIRM PROMPTS
+    // IF TRUE
+        // RANDOMIZE
+        // PULL LENGTH
+        // ADD TO TEMP PASSWORD
+    // IF FALSE
+        // MOVE TO NEXT QUESTION
+
 
 function getLength() {
     passwordLength = prompt('how long 1-11')
@@ -45,8 +59,19 @@ function getRandom() {
     //console.log(symbol);
     //console.log(lower);
     console.log(number);
+    getCheck();
     return
 }
+
+function getCheck() {
+    if (addNumber === true) {
+        tempPassword.concat(number)
+        console.log(number);
+    }
+    console.log(tempPassword);
+    return tempPassword
+}
+
 // function getRandom () {
 //     var passwordLength = prompt('how long 1-11')
 //     var result = [];
@@ -68,7 +93,7 @@ function getRandom() {
 
 function writePassword() {
     //console.log("clicked");
-    addNumber()
+    questions()
 }
 
 
