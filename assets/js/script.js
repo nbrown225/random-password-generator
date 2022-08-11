@@ -35,16 +35,14 @@ function getLength () {
     getRandom();
     return;
 }
-// VARIABLES FOR
+// CREATE RANDOM STRINGS
 function getRandom (){
     for (var i = 0; i < passwordLength; i++){
        randoNumber.push(numberArr[Math.floor(Math.random()*numberArr.length)]);
-       randoUpper.push(upperArr[Math.floor(Math.random()*upperArr.length)])
+       randoUpper.push(upperArr[Math.floor(Math.random()*upperArr.length)]);
+       randoLlower.push(lowerArr[Math.floor(Math.random()*lowerArr.length)]);
+       randoSymbol.push(symbolArr[Math.floor(Math.random()*symbolArr.le)]);
     }
-    // REMOVE THE FREAKING COMMAS!!!!
-     // ATTEPTED TO REMOVE COMMAS, BUT WOULD RESULT IN STRING WITH RANDOM COMMAS
-    //newString = randostring.toString().replace('',',')
-    
     //console.log(randoNumber);
     checkNumber()
     return
@@ -61,215 +59,56 @@ function checkNumber () {
     }
     return
 }
-// UPPER LETTERS
+// UPPERCASE LETTERS
 function checkUpper () {
-    if (confirm('Would you like to add upper letters?') == true) {
+    if (confirm('Would you like to add uppercase letters?') == true) {
         tempPassword.push(randoUpper);
         //console.log(tempPassword);
-        randomizeNewPassword()
+        checkLower() 
     } else{
-        randomizeNewPassword()
+        checkLower()
     }
+    return
 }
+// LOWERCASE LETTERS
+function checkLower () {
+    if (confirm('Would you like to add lowercase letters?') == true) {
+        tempPassword.push(randoLlower);
+        checkSymbol()
+    } else(
+        checkSymbol
+    )
+    return
+}
+// SYMBOLS
+function checkSymbol () {
+    if (confirm('Would you like to add symbols?') == true) {    
+        tempPassword.push(randoSymbol);
+        randomizeNewPassword();
+    } else{
+        randomizeNewPassword();
+    }
+    return
+}
+
+// -----------------GET RANDOM STRING BASED ON PASSWORDLENGTH
 function randomizeNewPassword (){
     for (var i = 0; i < passwordLength; i++){
+        // CREATE VARIABLE FOR FINISHED PASSWORD
         createdPassword = tempPassword.toString('').replaceAll(',','');
         console.log(createdPassword);
     }
+    writePassword();
     return createdPassword
 }
-// CHECK CONFIRM PROMPTS
-    // IF TRUE
-        // RANDOMIZE
-        // PULL LENGTH
-        // ADD TO TEMP PASSWORD
-    // IF FALSE
-        // MOVE TO NEXT QUESTION
 
+// -----------------WRITE FINISHED PASSWORD ON PAGE!
+function writePassword (){
+    passwordText.innerHTML = createdPassword
+}
 
-// START PASSWORD CRITERIA
+// ----------------START PASSWORD CRITERIA FUNCTION
 function startFunc() {
     console.log("clicked");
     getLength()
 }
-
-/*
-// ------------------FUNCTIONS FOR PASSWORD CRITERIA
-// UPPERCASE
-function addUpper() {
-    if (confirm('Would you like to add uppercase characters?') == true) {
-        upper = upperArr
-       // tempPassword.push(upperArr);
-        addSymbol();
-    } else {
-        console.log('upper not added');
-        //console.log(tempPassword);
-        addSymbol();
-        return upper;
-    }
-    //console.log(tempPassword);
-    return upper;
-};
-// LOWERCASE
-function addLower() {
-    // var lower = '';
-    if (confirm('Would you like to add lowercase characters?') == true) {
-        //lower = lowerArr;
-        tempPassword.push(lowerArr);
-        checkNumber();
-    } else{
-        console.log('lower not added');
-        //console.log(tempPassword);
-        checkNumber();
-        return tempPassword;
-    }
-    //console.log(tempPassword);
-    return tempPassword;
-};
-// NUMBER
-function checkNumber() {
-    if (confirm('Would you like to add numbers?') == true) {
-        tempPassword.push(numbersArr);
-        addSymbol();
-    } else {
-        console.log('no number');
-        addSymbol();
-        return tempPassword;
-    }
-    return tempPassword;
-};
-// SYMBOL
-function addSymbol() {
-    if (confirm('Would you like to add symbols?') == true) {
-        symbol = symbolArr
-        //tempPassword.push(symbolArr);
-        getLength();
-    } else {
-        console.log('no symbol');
-        getLength();
-        return symbol;
-    }
-    //console.log(tempPassword);
-    return symbol;
-}
-// LENGTH
-function getLength() {
-    passwordLength = prompt('how long 1-11')
-    if (passwordLength > MIN || passwordLength < MAX) {
-        console.error('nope');
-    }
-    console.log(passwordLength);
-    getRandom()
-    return passwordLength
-}
-
-// RANDOMIZE
-function getRandom() {
-    
-    for (var i = 0; i< passwordLength; i++){
-        //upper = [];
-        upper.push(upperArr[Math.floor(Math.random()*upperArr.length)]);
-        //lower.push(lowerArr[Math.floor(Math.random()*lowerArr.length)]);
-        symbol.push(symbolArr[Math.floor(Math.random()*symbol.length)]);
-        number.push(numberArr[Math.floor(Math.random()*numberArr.length)]);
-    }
-    //console.log(passwordLength);
-    //console.log(number);
-    //console.log(symbol);
-    //console.log(lower);
-    console.log(number);
-    return
-}
-
-
-function writePassword() {
-    //console.log("clicked");
-    addUpper()
-}
-
-// for (let index = 0; index < passwordLength; index++) {
-//     var randomIndex = Math.floor(Math.random()*passwordLength)
-//     const element = temppass[randomIndex];
-//     // arrays go here
-//     const element2 = temppass2[index];
-//    // console.log(element2);
-//     console.log(element);
-    
-// }
-
-// test the results
-// console.log(randomNumber());
-// console.log(randomLower());
-// console.log(randomUpper());
-// console.log(randomSymbol());
-
-// PROMPT USERS FOR CRITERIA
-// // var numbers  = ""
-// // function getCriteria() {
-// //     if (confirm('Add number?') == true) {
-// //         randomNumber()
-// //         return true
-// //     } else {
-// //         console.log('no add');
- //     }
-// // }
-
-
-// PUSH CRITERIA TOGETHER
-// PRINT PASSWORD TO PAGE
-
-
-
-
-// START FUNCTION
-
-// WANT PASSWORD TO PRINT ON PAGE
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// getCriteria = (){
-//     var numbers = "0123456789";
-//     var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-//     var lower = "abcdefghijklmnopqrstuvwxyz";
-//     var special = "!@#$%^&*()";
-//     return
-//     password = [numbers, upper, lower, special]
-// }
-
-
-// startFunc = () {
-//     prompt(getCriteria);
-// }
-*/
